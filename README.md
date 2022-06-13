@@ -45,6 +45,6 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ---
 
-<p align="center"> <b> 👉🏻 Created Tic Tac Toe Gane Using Angular Framework 👈🏻 <b> </p>
+<p align="center"> <b> 👉🏻 Created Tic Tac Toe Game Using Angular Framework 👈🏻 <b> </p>
  
 <p align="center"><a href='https://github.com/Amey-Thakur/TIC-TAC-TOE-ANGULAR-FRAMEWORK', style='color: greenyellow;'> ✌🏻 Back To Repository ✌🏻</p>
