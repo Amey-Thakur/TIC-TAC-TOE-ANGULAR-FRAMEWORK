@@ -4,6 +4,15 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 - [X] **[Project Demo](https://youtu.be/zCKgLImSjeo)**
 
+
+## Authors
+  
+   - **[Amey Thakur](https://github.com/Amey-Thakur)**
+   
+   - **[Mega Satish](https://github.com/msatmod)**
+
+#
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
@@ -51,4 +60,6 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 <p align="center"> <b> 👉🏻 Created Tic Tac Toe Game Using Angular Framework 👈🏻 <b> </p>
  
-<p align="center"><a href='https://github.com/Amey-Thakur/TIC-TAC-TOE-ANGULAR-FRAMEWORK', style='color: greenyellow;'> ✌🏻 Back To Repository ✌🏻</p>
+<p align="center"> <b> 👷 Project Authors: Amey Thakur and Mega Satish <b> </p>
+ 
+<p align="center"><a href='https://github.com/Amey-Thakur/ENGINEERING', style='color: greenyellow;'> ✌🏻 Back To Engineering ✌🏻</p>
