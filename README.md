@@ -43,17 +43,17 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 >**[Project Demo](https://youtu.be/zCKgLImSjeo)**
 
-![image](https://user-images.githubusercontent.com/54937357/173431154-83b9b0f8-063e-449d-94a5-fe0b3bb19de8.png)
+![Screenshot 1](screenshots/screenshot1.png)
 
-![image](https://user-images.githubusercontent.com/54937357/173431192-1d3fba6d-80d6-497b-bef9-4694aa97a3c7.png)
+![Screenshot 2](screenshots/screenshot2.png)
 
-![image](https://user-images.githubusercontent.com/54937357/173431764-1524cfe7-2e50-4489-a88e-4cc31b5c0ee5.png)
+![Screenshot 3](screenshots/screenshot3.png)
 
-![image](https://user-images.githubusercontent.com/54937357/173431308-8bd1b090-c5a1-46e2-98c3-cb24c778a77e.png)
+![Screenshot 4](screenshots/screenshot4.png)
 
-![image](https://user-images.githubusercontent.com/54937357/173431522-f3187b9f-7926-4755-b759-e61e3d5eb888.png)
+![Screenshot 5](screenshots/screenshot5.png)
 
-![image](https://user-images.githubusercontent.com/54937357/173431851-2a52456e-bbcf-477d-9baf-ed290c1810d3.png)
+![Screenshot 6](screenshots/screenshot6.png)
 
 
 ---
