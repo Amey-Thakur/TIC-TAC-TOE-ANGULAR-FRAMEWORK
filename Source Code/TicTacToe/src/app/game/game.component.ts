@@ -13,10 +13,30 @@ export class GameComponent implements OnInit {
   counter = 0;
   isDraw = '';
   freshPage = true;
+  loading = true;
+  loadingProgress = 0;
 
   constructor() { }
 
   ngOnInit(): void {
+    this.simulateLoading();
+  }
+
+  simulateLoading() {
+    const duration = 2500;
+    const intervalTime = 50;
+    const increment = (100 / (duration / intervalTime));
+
+    const progressInterval = setInterval(() => {
+      this.loadingProgress += increment;
+      if (this.loadingProgress >= 100) {
+        this.loadingProgress = 100;
+        clearInterval(progressInterval);
+        setTimeout(() => {
+          this.loading = false;
+        }, 500);
+      }
+    }, intervalTime);
   }
 
   newGame() {
