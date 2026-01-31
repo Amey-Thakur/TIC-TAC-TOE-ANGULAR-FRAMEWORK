@@ -43,17 +43,17 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 >**[Project Demo](https://youtu.be/zCKgLImSjeo)**
 
-![Screenshot 1](screenshots/screenshot1.png)
+![Initial State](screenshots/initial-state.png)
 
-![Screenshot 2](screenshots/screenshot2.png)
+![Empty Board](screenshots/empty-board.png)
 
-![Screenshot 3](screenshots/screenshot3.png)
+![Mid Game](screenshots/mid-game.png)
 
-![Screenshot 4](screenshots/screenshot4.png)
+![Draw State](screenshots/draw-state.png)
 
-![Screenshot 5](screenshots/screenshot5.png)
+![Winner X](screenshots/winner-x.png)
 
-![Screenshot 6](screenshots/screenshot6.png)
+![Winner O](screenshots/winner-o.png)
 
 
 ---
