@@ -519,13 +519,15 @@ h2 {
 
 /* Winning Line Highlight */
 .board-snapshot .winning ::ng-deep .square {
+    background-color: #00ffcc !important;
     background: #00ffcc !important;
     color: #1a2a6c !important;
     box-shadow: 0 0 30px #00ffcc, inset 0 0 10px rgba(255, 255, 255, 0.5) !important;
     border-color: #00ffcc !important;
     transform: scale(1.05);
-    /* Slight pop */
     z-index: 10;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
 }
 
 .card-footer-line {
