@@ -509,17 +509,19 @@ h2 {
 }
 
 /* Force snapshot cards to be white/opaque and distinct */
-/* Force snapshot cards to be white/opaque and distinct explicitly for non-winning cells */
-.board-snapshot app-board:not(.winning) ::ng-deep .square {
+/* Force snapshot cards to be white/opaque and distinct */
+.board-snapshot ::ng-deep .square {
     background: rgba(255, 255, 255, 0.9) !important;
+    background-color: rgba(255, 255, 255, 0.9) !important;
     border: 1px solid rgba(255, 255, 255, 0.5) !important;
     color: #1a2a6c !important;
     text-shadow: none !important;
 }
 
 /* Winning Line Highlight - Simplified */
-.board-snapshot .winning ::ng-deep .square {
+.board-snapshot app-board.winning ::ng-deep .square {
     background: #00ffcc !important;
+    background-color: #00ffcc !important;
     color: #1a2a6c !important;
     border-color: #00ffcc !important;
     -webkit-print-color-adjust: exact;
