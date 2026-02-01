@@ -3,7 +3,7 @@
  * File: game.component.ts
  * Description: Core game engine and state controller. Manages reactivity via Angular Signals,
  *              handles turn-based logic, evaluates win conditions, and orchestrates 
- *              cinematic post-game sequences.
+ *              tactile post-game sequences.
  *
  * Authors:
  *   - Amey Thakur — https://github.com/Amey-Thakur
@@ -15,7 +15,7 @@
  * Live Application:
  *   https://amey-thakur.github.io/TIC-TAC-TOE/
  *
- * Video Demonstration:
+ * Video Demo:
  *   https://youtu.be/zCKgLImSjeo
  *
  * Release Date:

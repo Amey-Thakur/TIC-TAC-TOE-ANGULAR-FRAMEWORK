@@ -8,9 +8,9 @@
   [![Technology](https://img.shields.io/badge/Technology-Angular%20%7C%20Signals-dd0031)](https://github.com/Amey-Thakur/TIC-TAC-TOE-ANGULAR-FRAMEWORK)
   [![Developed by Amey Thakur and Mega Satish](https://img.shields.io/badge/Developed%20by-Amey%20Thakur%20%26%20Mega%20Satish-blue.svg)](https://github.com/Amey-Thakur/TIC-TAC-TOE-ANGULAR-FRAMEWORK)
 
-  A high-performance, cinematic game implementation built with Angular 21, featuring autonomous state management via Signals and procedural audio synthesis for a premium Human-Machine Interaction (HMI) experience.
+  A high-performance, tactile game implementation built with Angular 21, featuring autonomous state management via Signals and procedural audio synthesis for a premium Human-Machine Interaction (HMI) experience.
 
-  **[Source Code](Source%20Code/TicTacToe/)** &nbsp;·&nbsp; **[Video Demonstration](https://youtu.be/zCKgLImSjeo)** &nbsp;·&nbsp; **[Live Demo](https://amey-thakur.github.io/TIC-TAC-TOE/)**
+  **[Source Code](Source%20Code/TicTacToe/)** &nbsp;·&nbsp; **[Video Demo](https://youtu.be/zCKgLImSjeo)** &nbsp;·&nbsp; **[Live Demo](https://amey-thakur.github.io/TIC-TAC-TOE/)**
 
 </div>
 
@@ -45,15 +45,15 @@
 <a name="overview"></a>
 ## Overview
 
-**Tic Tac Toe (Angular Framework)** is a cinematic interactive system engineered to redefine classic logic through a responsive, glassmorphic interface. By bridging the gap between traditional board games and sensory-rich digital environments, this repository provides a foundational study into modern Angular architecture and Human-Machine Interaction (HMI).
+**Tic Tac Toe (Angular Framework)** is a tactile interactive system engineered to redefine classic logic through a responsive, glassmorphic interface. By bridging the gap between traditional board games and sensory-rich digital environments, this repository provides a foundational study into modern Angular architecture and Human-Machine Interaction (HMI).
 
-The application serves as a digital exploration of reactive state management and cinematic transitions, brought into a modern context via the latest **Angular 21** and **Signals**, enabling high-performance game orchestration directly within the browser environment.
+The application serves as a digital exploration of reactive state management and tactile transitions, brought into a modern context via the latest **Angular 21** and **Signals**, enabling high-performance game orchestration directly within the browser environment.
 
 ### Engineering Heuristics
 The interaction model is governed by strict **computational design patterns** ensuring fidelity and responsiveness:
 *   **Reactive Orchestration**: The system utilizes **Angular Signals** for granular reactivity, ensuring O(1) change detection and eliminating redundant DOM reconciliation during intensive gameplay.
 *   **Procedural Audio**: Beyond visual cues, the system integrates a **Web Audio API engine** that dynamically generates synthesized waveforms, reinforcing the goal-driven narrative of every move.
-*   **Cinematic Physics**: Layout and interaction transitions are governed by complex `cubic-bezier` curves and rotate-aware CSS transformations, providing a physical, elastic feel to the board.
+*   **Tactile Physics**: Layout and interaction transitions are governed by complex `cubic-bezier` curves and rotate-aware CSS transformations, providing a physical, elastic feel to the board.
 
 > [!TIP]
 > **Sensory Precision Integration**
@@ -70,9 +70,9 @@ The interaction model is governed by strict **computational design patterns** en
 |---------|-------------|
 | **Autonomous State** | Implements **Angular Signals** (`signal`, `computed`, `effect`) for modern reactive orchestration. |
 | **Procedural Audio** | Custom **Web Audio Synthesizer** generating real-time waveforms for tactile sensory feedback. |
-| **Cinematic UX** | **Glassmorphic Design** with responsive hover expansions and 3D board transformations. |
+| **Tactile UX** | **Glassmorphic Design** with responsive hover expansions and 3D board transformations. |
 | **Pristine Archival** | A refined structure with eliminated clutter, ensuring a **"Pure Source"** study environment. |
-| **High-Fidelity Sharing** | Integrated **Result Card Engine** using `html2canvas` for cinematic post-game snapshots. |
+| **High-Fidelity Sharing** | Integrated **Result Card Engine** using `html2canvas` for responsive post-game snapshots. |
 | **Hardened Logic** | Advanced **Guard Clauses** and interaction locks to prevent state corruption post-victory. |
 | **Automated Ops** | Modern **GitHub Actions Workflow** for deterministic PWA deployment to GitHub Pages. |
 | **Structural Clarity** | In-depth and detailed scholarly comments integrated throughout the codebase for transparent logic study. |
@@ -132,7 +132,7 @@ TIC-TAC-TOE-ANGULAR-FRAMEWORK/
 ## Results
 
 <div align="center">
-  <b>System Boot: Cinematic Loading</b>
+  <b>System Boot: Sensory Loading</b>
   <br>
   <i>Initial system state with optimized aesthetics and synchronized brand identity.</i>
   <br><br>
@@ -188,7 +188,7 @@ TIC-TAC-TOE-ANGULAR-FRAMEWORK/
   <img src="screenshots/08-share-result-screen.png" alt="Share Screen" width="90%">
   <br><br><br>
 
-  <b>Cinematic Snapshots: High-Fidelity Cards</b>
+  <b>Refined Snapshots: High-Fidelity Cards</b>
   <br>
   <i>Synthesized result cards optimized for social distribution and archival.</i>
   <br><br>
@@ -281,13 +281,13 @@ Copyright © 2022 Amey Thakur & Mega Satish
 
 **Created & Maintained by**: [Amey Thakur](https://github.com/Amey-Thakur) & [Mega Satish](https://github.com/msatmod)
 
-This project features **Tic Tac Toe (Angular Framework)**, a sensory-rich cinematic game. It represents a personal exploration into **Angular**-based state orchestration and high-performance interactive design.
+This project features **Tic Tac Toe (Angular Framework)**, a sensory-rich tactile game. It represents a personal exploration into **Angular**-based state orchestration and high-performance interactive design.
 
 **Connect:** [GitHub](https://github.com/Amey-Thakur) &nbsp;·&nbsp; [LinkedIn](https://www.linkedin.com/in/amey-thakur) &nbsp;·&nbsp; [ORCID](https://orcid.org/0000-0001-5644-1575)
 
 ### Acknowledgments
 
-Grateful acknowledgment to [**Mega Satish**](https://github.com/msatmod) for her exceptional collaboration and partnership during the development of this Tic-Tac-Toe Cinematic Archive. Her constant support, technical clarity, and dedication to software quality were instrumental in achieving the system's functional objectives. Learning alongside her was a transformative experience; her thoughtful approach to problem-solving and steady encouragement turned complex requirements into meaningful learning moments. This work reflects the growth and insights gained from our side-by-side journey. Thank you, Mega, for everything you shared and taught along the way.
+Grateful acknowledgment to [**Mega Satish**](https://github.com/msatmod) for her exceptional collaboration and partnership during the development of this Tic-Tac-Toe Technical Archive. Her constant support, technical clarity, and dedication to software quality were instrumental in achieving the system's functional objectives. Learning alongside her was a transformative experience; her thoughtful approach to problem-solving and steady encouragement turned complex requirements into meaningful learning moments. This work reflects the growth and insights gained from our side-by-side journey. Thank you, Mega, for everything you shared and taught along the way.
 
 Special thanks to the **ment mentors and peers** whose encouragement, discussions, and support contributed meaningfully to this learning experience.
 
