@@ -2,12 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import html2canvas from 'html2canvas';
 import { DecimalPipe } from '@angular/common';
 import { BoardComponent } from '../board/board.component';
+import { SoundService } from '../sound.service';
 
 @Component({
-    selector: 'app-game',
-    templateUrl: './game.component.html',
-    styleUrls: ['./game.component.css'],
-    imports: [BoardComponent, DecimalPipe]
+  selector: 'app-game',
+  templateUrl: './game.component.html',
+  styleUrls: ['./game.component.css'],
+  imports: [BoardComponent, DecimalPipe]
 })
 export class GameComponent implements OnInit {
 
@@ -21,7 +22,7 @@ export class GameComponent implements OnInit {
   loadingProgress = 0;
   showCard = false;
 
-  constructor() { }
+  constructor(private soundService: SoundService) { }
 
   ngOnInit(): void {
     this.simulateLoading();
@@ -47,12 +48,14 @@ export class GameComponent implements OnInit {
 
 
   toggleShareCard() {
+    this.soundService.playClick();
     this.showCard = !this.showCard;
   }
 
   async copyResult() {
     const text = `🎮 Tic-Tac-Toe\n\n🏆 Result: ${this.winner ? 'Player ' + this.winner + ' Won!' : 'It was a Draw!'} \n🔥 Unbeatable Match!\n\n🔴 Play Live: https://amey-thakur.github.io/TIC-TAC-TOE/\n\nCreated by Amey Thakur & Mega Satish`;
     try {
+      this.soundService.playClick();
       await navigator.clipboard.writeText(text);
       alert('Result copied to clipboard!');
     } catch (err) {
@@ -69,6 +72,7 @@ export class GameComponent implements OnInit {
 
     if (navigator.share) {
       try {
+        this.soundService.playClick();
         await navigator.share(data);
       } catch (err) {
         console.error('Error sharing:', err);
@@ -79,6 +83,7 @@ export class GameComponent implements OnInit {
   }
 
   downloadCard() {
+    this.soundService.playClick();
     const element = document.querySelector('.share-card') as HTMLElement;
     if (element) {
       // Temporarily hide buttons for the screenshot
@@ -109,14 +114,25 @@ export class GameComponent implements OnInit {
 
   makeMove(idx: number) {
     if (!this.squares[idx]) {
-      this.squares.splice(idx, 1, this.player)
+      const currentPlayer = this.player;
+      this.squares.splice(idx, 1, currentPlayer)
+
+      if (currentPlayer === 'X') {
+        this.soundService.playMoveX();
+      } else {
+        this.soundService.playMoveO();
+      }
+
       this.xIsNext = !this.xIsNext;
       this.counter++;
     }
     this.winner = this.calculateWinner();
 
-    if (!this.winner && this.counter == 9) {
+    if (this.winner) {
+      this.soundService.playWin();
+    } else if (this.counter == 9) {
       this.isDraw = 'yes'
+      this.soundService.playDraw();
     }
   }
 
@@ -138,6 +154,7 @@ export class GameComponent implements OnInit {
   }
 
   newGame() {
+    this.soundService.playClick();
     this.squares = Array(9).fill(null);
     this.winner = '';
     this.isDraw = '';
