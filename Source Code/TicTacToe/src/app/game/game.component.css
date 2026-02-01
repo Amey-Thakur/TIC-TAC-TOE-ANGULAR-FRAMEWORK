@@ -508,15 +508,7 @@ h2 {
     /* Ensure it keeps original aspect ratio before scaling */
 }
 
-/* Force snapshot cards to be white/opaque and distinct */
-/* Force snapshot cards to be white/opaque and distinct */
-.board-snapshot ::ng-deep .square {
-    background: rgba(255, 255, 255, 0.9) !important;
-    background-color: rgba(255, 255, 255, 0.9) !important;
-    border: 1px solid rgba(255, 255, 255, 0.5) !important;
-    color: #1a2a6c !important;
-    text-shadow: none !important;
-}
+
 
 
 

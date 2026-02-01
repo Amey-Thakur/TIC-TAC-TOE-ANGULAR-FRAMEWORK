@@ -10,6 +10,7 @@ import { Component, Input, OnInit } from '@angular/core';
 export class BoardComponent implements OnInit {
   @Input() value: 'X' | 'O' | undefined;
   @Input() isWinning: boolean = false;
+  @Input() isSnapshot: boolean = false;
   constructor() { }
 
   ngOnInit(): void {

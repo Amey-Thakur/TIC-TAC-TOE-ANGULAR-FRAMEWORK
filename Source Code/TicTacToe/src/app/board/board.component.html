@@ -1,9 +1,9 @@
 @if (!value) {
-<button class="square" [class.winning-style]="isWinning">{{value}}</button>
+<button class="square" [class.winning-style]="isWinning" [class.snapshot-style]="isSnapshot">{{value}}</button>
 }
 @if (value == 'X') {
-<button class="square x-mark" [class.winning-style]="isWinning">{{value}}</button>
+<button class="square x-mark" [class.winning-style]="isWinning" [class.snapshot-style]="isSnapshot">{{value}}</button>
 }
 @if (value == 'O') {
-<button class="square o-mark" [class.winning-style]="isWinning">{{value}}</button>
+<button class="square o-mark" [class.winning-style]="isWinning" [class.snapshot-style]="isSnapshot">{{value}}</button>
 }
