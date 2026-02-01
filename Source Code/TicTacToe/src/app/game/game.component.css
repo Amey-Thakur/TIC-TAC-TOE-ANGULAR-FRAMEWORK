@@ -596,6 +596,9 @@ h2 {
     color: white;
     padding: 6px 12px;
     /* Smaller buttons */
+    min-width: 100px;
+    /* Harmonized width */
+    text-align: center;
     border-radius: 15px;
     cursor: pointer;
     font-size: 0.8rem;
