@@ -1,3 +1,9 @@
-<button class="square" *ngIf="!value">{{value}}</button>
-<button class="square x-mark" *ngIf="value == 'X'">{{value}}</button>
-<button class="square o-mark" *ngIf="value == 'O'">{{value}}</button>
+@if (!value) {
+  <button class="square">{{value}}</button>
+}
+@if (value == 'X') {
+  <button class="square x-mark">{{value}}</button>
+}
+@if (value == 'O') {
+  <button class="square o-mark">{{value}}</button>
+}

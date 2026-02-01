@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import html2canvas from 'html2canvas';
-import { NgIf, NgFor, DecimalPipe } from '@angular/common';
+import { DecimalPipe } from '@angular/common';
 import { BoardComponent } from '../board/board.component';
 
 @Component({
     selector: 'app-game',
     templateUrl: './game.component.html',
     styleUrls: ['./game.component.css'],
-    imports: [NgIf, NgFor, BoardComponent, DecimalPipe]
+    imports: [BoardComponent, DecimalPipe]
 })
 export class GameComponent implements OnInit {
 
