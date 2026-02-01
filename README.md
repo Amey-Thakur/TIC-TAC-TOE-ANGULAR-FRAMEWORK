@@ -157,7 +157,7 @@ TIC-TAC-TOE-ANGULAR-FRAMEWORK/
   <img src="screenshots/02-homepage.png" alt="Homepage" width="90%">
   <br><br><br>
  
-  <b>Mission Start: Reactive Ready</b>
+  <b>Game Start: Reactive Ready</b>
   <br>
   <i>Logical state prepared for high-fidelity interactive orchestration.</i>
   <br><br>
