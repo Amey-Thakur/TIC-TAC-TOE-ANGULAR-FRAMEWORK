@@ -509,11 +509,11 @@ h2 {
 }
 
 /* Force snapshot cards to be white/opaque and distinct */
-.board-snapshot ::ng-deep .square {
+/* Force snapshot cards to be white/opaque and distinct explicitly for non-winning cells */
+.board-snapshot app-board:not(.winning) ::ng-deep .square {
     background: rgba(255, 255, 255, 0.9) !important;
     border: 1px solid rgba(255, 255, 255, 0.5) !important;
     color: #1a2a6c !important;
-    /* Dark blue text for contrast */
     text-shadow: none !important;
 }
 
