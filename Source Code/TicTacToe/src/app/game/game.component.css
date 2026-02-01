@@ -518,15 +518,7 @@ h2 {
     text-shadow: none !important;
 }
 
-/* Winning Line Highlight - Simplified */
-.board-snapshot app-board.winning ::ng-deep .square {
-    background: #00ffcc !important;
-    background-color: #00ffcc !important;
-    color: #1a2a6c !important;
-    border-color: #00ffcc !important;
-    -webkit-print-color-adjust: exact;
-    print-color-adjust: exact;
-}
+
 
 .card-footer-line {
     width: 60%;

@@ -100,7 +100,7 @@
       <!-- Mini Board Snapshot -->
       <div class="board-snapshot">
         @for (val of squares(); track val; let i = $index) {
-        <app-board [value]="val" [class.winning]="winningIndices().includes(i)"></app-board>
+        <app-board [value]="val" [isWinning]="winningIndices().includes(i)"></app-board>
         }
       </div>
       <div class="card-footer-line"></div>

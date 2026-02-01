@@ -58,3 +58,16 @@
         background: rgba(255, 255, 255, 0.95);
     }
 }
+
+/* Explicit winning style for snapshots/highlights */
+.winning-style {
+    background-color: #00ffcc !important;
+    background: #00ffcc !important;
+    border-color: #00ffcc !important;
+    color: #1a2a6c !important;
+    text-shadow: none !important;
+    animation: none !important;
+    box-shadow: 0 0 15px rgba(0, 255, 204, 0.4) !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+}
