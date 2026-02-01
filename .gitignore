@@ -1,19 +1,9 @@
 # Dependencies
-/node_modules
-/.pnp
-.pnp.js
-
-# Testing
-/coverage
-/.karma
-
-# Production
-/dist
-/out-tsc
-/bazel-out
-
-# Framework Specific
+node_modules/
+dist/
 .angular/
+out-tsc/
+bazel-out/
 .cache
 .sass-cache/
 connect.lock
