@@ -203,11 +203,10 @@ TIC-TAC-TOE-ANGULAR-FRAMEWORK/
   <br>
   <i>Synthesized result cards optimized for social distribution and archival.</i>
   <br><br>
-  <img src="screenshots/09-share-card-x-win.png" alt="Share Card X" width="90%">
+  <img src="screenshots/09-share-card-x-win.png" alt="Share Card X" width="48.5%">
+  <img src="screenshots/10-share-card-o-win.png" alt="Share Card O" width="48.5%">
   <br><br>
-  <img src="screenshots/10-share-card-o-win.png" alt="Share Card O" width="90%">
-  <br><br>
-  <img src="screenshots/11-share-card-draw.png" alt="Share Card Draw" width="90%">
+  <img src="screenshots/11-share-card-draw.png" alt="Share Card Draw" width="48.5%">
 </div>
 
 ---
