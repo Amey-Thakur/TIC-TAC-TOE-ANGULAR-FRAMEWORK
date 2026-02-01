@@ -311,7 +311,7 @@ Special thanks to the **ment mentors and peers** whose encouragement, discussion
 
   <br>
 
-  🅰️ **[Tic Tac Toe (Angular)](https://amey-thakur.github.io/TIC-TAC-TOE/)**
+  🅰️ **[Tic Tac Toe (Angular Framework)](https://amey-thakur.github.io/TIC-TAC-TOE/)**
 
   ---
 
