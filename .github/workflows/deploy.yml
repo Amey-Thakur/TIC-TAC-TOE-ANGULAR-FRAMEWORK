@@ -31,7 +31,7 @@ jobs:
           cache-dependency-path: 'Source Code/TicTacToe/package-lock.json'
 
       - name: Install Dependencies
-        run: npm ci
+        run: npm install
         working-directory: 'Source Code/TicTacToe'
 
       - name: Build
