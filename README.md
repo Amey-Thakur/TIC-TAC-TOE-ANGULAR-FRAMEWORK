@@ -102,6 +102,9 @@ TIC-TAC-TOE-ANGULAR-FRAMEWORK/
 ├── .github/ workflows/              # DevOps Automation
 │   └── deploy.yml                   # GitHub Pages Deployment
 │
+├── docs/                            # Documentation Layer
+│   └── SPECIFICATION.md             # Technical Architecture
+│
 ├── Mega/                            # Attribution Assets
 │   ├── Filly.jpg                    # Companion (Filly)
 │   └── Mega.png                     # Profile Image (Mega Satish)
@@ -116,12 +119,20 @@ TIC-TAC-TOE-ANGULAR-FRAMEWORK/
 │   └── TicTacToe/
 │       ├── src/                     # Standalone Logic
 │       │   ├── app/                 # Component Ecosystem
+│       │   │   ├── board/           # Square Components
 │       │   │   ├── game/            # Game Orchestrator (Signals)
+│       │   │   ├── not-found/       # Error Handling Layer
 │       │   │   └── sound.service.ts # Procedural Audio Engine
-│       │   └── styles.css           # Design Tokens
+│       │   ├── assets/              # Static Resources
+│       │   ├── index.html           # Application Entrance
+│       │   └── main.ts              # System Bootstrapper
 │       ├── angular.json             # Build Architecture
 │       └── package.json             # Dependency Manifest
 │
+├── SECURITY.md                      # Security Protocols
+├── social_preview.html              # Social Preview Branding
+├── CITATION.cff                     # Project Citation Manifest
+├── codemeta.json                    # Metadata Standard
 ├── LICENSE                          # MIT License
 └── README.md                        # Project Entrance
 ```
