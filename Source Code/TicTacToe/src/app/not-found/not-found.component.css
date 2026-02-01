@@ -1,0 +1,120 @@
+:host {
+    --clr-bg: #0a192f;
+    --clr-card: #112240;
+    --clr-accent: #00ffcc;
+    /* Cyan to match TicTacToe theme */
+    --clr-accent-dim: rgba(0, 255, 204, 0.2);
+    --clr-text: #ccd6f6;
+    --clr-slate: #8892b0;
+
+    font-family: 'Play', sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: var(--clr-bg);
+    color: var(--clr-text);
+}
+
+.error-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+}
+
+.error-code {
+    font-size: 10rem;
+    color: var(--clr-accent);
+    font-weight: 700;
+    margin: 0;
+    line-height: 1;
+    position: relative;
+    animation: glitch 1s infinite alternate-reverse;
+    text-shadow: 2px 2px 0 var(--clr-card), -2px -2px 0 #cc99ff;
+    /* Purple secondary */
+}
+
+.error-message {
+    font-size: 1.5rem;
+    color: var(--clr-slate);
+    margin-top: 10px;
+    margin-bottom: 40px;
+    letter-spacing: 1px;
+}
+
+@keyframes glitch {
+    0% {
+        transform: skew(0deg);
+    }
+
+    20% {
+        transform: skew(-2deg);
+    }
+
+    40% {
+        transform: skew(2deg);
+    }
+
+    60% {
+        transform: skew(-1deg);
+    }
+
+    80% {
+        transform: skew(3deg);
+    }
+
+    100% {
+        transform: skew(0deg);
+    }
+}
+
+.broken-icon {
+    font-size: 5rem;
+    color: var(--clr-slate);
+    margin-bottom: 20px;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0px) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-15px) rotate(5deg);
+    }
+
+    100% {
+        transform: translateY(0px) rotate(0deg);
+    }
+}
+
+.btn-primary {
+    background: var(--clr-accent);
+    color: var(--clr-bg);
+    padding: 12px 24px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: all 0.3s ease;
+    border: 2px solid var(--clr-accent);
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.btn-primary:hover {
+    background: transparent;
+    color: var(--clr-accent);
+    transform: translateY(-2px);
+}
+
+footer {
+    padding: 40px 0;
+    text-align: center;
+    border-top: 1px solid var(--clr-card);
+    background: #060f1d;
+}

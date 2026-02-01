@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import html2canvas from 'html2canvas';
 
 @Component({
   selector: 'app-game',
@@ -15,6 +16,7 @@ export class GameComponent implements OnInit {
   freshPage = true;
   loading = true;
   loadingProgress = 0;
+  showCard = false;
 
   constructor() { }
 
@@ -39,17 +41,68 @@ export class GameComponent implements OnInit {
     }, intervalTime);
   }
 
-  newGame() {
-    this.squares = Array(9).fill(null);
-    this.winner = '';
-    this.isDraw = '';
-    this.counter = 0;
-    this.freshPage = false;
+
+
+  toggleShareCard() {
+    this.showCard = !this.showCard;
+  }
+
+  async copyResult() {
+    const text = `🎮 Tic-Tac-Toe\n\n🏆 Result: ${this.winner ? 'Player ' + this.winner + ' Won!' : 'It was a Draw!'} \n🔥 Unbeatable Match!\n\n🔴 Play Live: https://amey-thakur.github.io/TIC-TAC-TOE/\n\nCreated by Amey Thakur & Mega Satish`;
+    try {
+      await navigator.clipboard.writeText(text);
+      alert('Result copied to clipboard!');
+    } catch (err) {
+      console.error('Failed to copy: ', err);
+    }
+  }
+
+  async shareResult() {
+    const data = {
+      title: 'Tic-Tac-Toe Result',
+      text: `🎮 Tic-Tac-Toe\n\n🏆 Result: ${this.winner ? 'Player ' + this.winner + ' Won!' : 'It was a Draw!'} \n🔥 Unbeatable Match!\n\nCreated by Amey Thakur & Mega Satish`,
+      url: 'https://amey-thakur.github.io/TIC-TAC-TOE/'
+    };
+
+    if (navigator.share) {
+      try {
+        await navigator.share(data);
+      } catch (err) {
+        console.error('Error sharing:', err);
+      }
+    } else {
+      this.copyResult();
+    }
+  }
+
+  downloadCard() {
+    const element = document.querySelector('.share-card') as HTMLElement;
+    if (element) {
+      // Temporarily hide buttons for the screenshot
+      const buttons = element.querySelector('.action-buttons') as HTMLElement;
+      const hint = element.querySelector('.close-hint') as HTMLElement;
+
+      if (buttons) buttons.style.display = 'none';
+      if (hint) hint.style.display = 'none';
+
+      html2canvas(element, { backgroundColor: null, scale: 2 }).then(canvas => {
+        const link = document.createElement('a');
+        link.download = `tic-tac-toe-result-${Date.now()}.png`;
+        link.href = canvas.toDataURL('image/png');
+        link.click();
+
+        // Restore visibility
+        if (buttons) buttons.style.display = 'flex';
+        if (hint) hint.style.display = 'block';
+      });
+    }
   }
 
   get player() {
     return this.xIsNext ? 'X' : 'O'
   }
+
+  winningIndices: number[] = [];
 
   makeMove(idx: number) {
     if (!this.squares[idx]) {
@@ -74,10 +127,20 @@ export class GameComponent implements OnInit {
     for (let i = 0; i < lines.length; i++) {
       const [a, b, c] = lines[i];
       if (this.squares[a] && this.squares[a] === this.squares[b] && this.squares[a] === this.squares[c]) {
+        this.winningIndices = [a, b, c]; // Store winning indices
         return this.squares[a];
       }
     }
     return null
   }
 
+  newGame() {
+    this.squares = Array(9).fill(null);
+    this.winner = '';
+    this.isDraw = '';
+    this.counter = 0;
+    this.freshPage = false;
+    this.showCard = false;
+    this.winningIndices = [];
+  }
 }

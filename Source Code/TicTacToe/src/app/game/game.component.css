@@ -1,9 +1,9 @@
-*{
+* {
     margin: 0;
-    padding: 0;  
+    padding: 0;
 }
 
-.outer-cont{
+.outer-cont {
     font-family: 'Play', sans-serif;
     display: flex;
     flex-direction: column;
@@ -13,47 +13,338 @@
     height: 100vh;
 }
 
-main{
+.game-logo-title {
+    font-family: 'Play', sans-serif;
+    font-size: 1.8rem;
+    /* Increased size */
+    letter-spacing: 8px;
+    /* Wider spacing */
+    color: #fff;
+    display: block;
+    /* Ensure block-level for safe animation */
+    /* Start invisible to prevent flash */
+    opacity: 0;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    /* Soft, crisp white neon */
+    text-shadow:
+        0 0 2px #fff,
+        0 0 10px rgba(255, 255, 255, 0.5),
+        0 0 20px rgba(255, 255, 255, 0.3);
+    text-transform: uppercase;
+    font-weight: 900;
+    /* Use forwards to keep the final state (opacity: 1) */
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+main {
     font-family: 'Play', sans-serif;
     display: grid;
-    grid-template-columns: 200px 200px 200px;
-    grid-gap: 0px;
+    grid-template-columns: 120px 120px 120px;
+    grid-gap: 10px;
+    /* Modern spacing */
+    margin: 15px 0;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    border-radius: 25px;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+    animation: fadeInUp 1.2s ease-out;
 }
 
-app-board{
+app-board {
     font-family: 'Play', sans-serif;
-    border: 1px solid rgb(57, 57, 57);
-    height: 200px;
-}
-
-h1{
-    text-align: right;
-    font-family: 'Play', sans-serif;
-    padding: 20px 0px;
-    width: 100%;
-    margin-right: 200px;
-    color: white;
-}
-
-button{
-    font-family: 'Play', sans-serif;
-    font-size: 30px;
-    padding: 10px;
-    border-radius: 10px;
     border: none;
-    margin: 10px;
+    height: 120px;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-button:hover{
-    background-color: black;
-    color: white;
-    cursor: pointer;
+app-board:hover {
+    transform: scale(1.05);
 }
 
-h2{
+h1 {
+    text-align: center;
     font-family: 'Play', sans-serif;
-    font-size: 100px;
+    padding: 5px 0px;
+    /* Reduced padding */
+    width: 100%;
+    margin: 0;
     color: white;
+    font-size: 2.5rem;
+    letter-spacing: 10px;
+    text-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    animation: fadeInUp 0.8s ease-out;
+}
+
+button {
+    font-family: 'Play', sans-serif;
+    font-size: 24px;
+    padding: 10px 30px;
+    border-radius: 50px;
+    border: none;
+    margin: 15px;
+    background: white;
+    color: #1a2a6c;
+    font-weight: bold;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    animation: fadeInUp 1.4s ease-out;
+}
+
+button:hover {
+    background-color: #00ffcc;
+    color: #1a1a2e;
+    transform: translateY(-8px) scale(1.05);
+    box-shadow: 0 20px 40px rgba(0, 255, 204, 0.4);
+}
+
+h2 {
+    font-family: 'Play', sans-serif;
+    font-size: 60px;
+    color: white;
+    margin-bottom: 30px;
+    text-align: center;
+    text-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    animation: fadeInUp 1s ease-out;
+}
+
+.game-footer {
+    position: absolute;
+    bottom: 20px;
+    text-align: center;
+    width: 100%;
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.8);
+    letter-spacing: 1px;
+    animation: fadeInUp 1.6s ease-out;
+}
+
+.game-footer p {
+    margin: 12px 0;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* Share Overlay */
+.share-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(5px);
+    z-index: 10000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.share-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 20px;
+    padding: 20px 40px;
+    /* Reduced padding */
+    text-align: center;
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+    animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    /* Reduced gap */
+    min-width: 300px;
+    max-height: 90vh;
+    /* Ensure it fits in viewport */
+    overflow-y: auto;
+    /* Allow internal scroll if absolutely necessary on tiny screens */
+}
+
+.close-hint {
+    margin-top: 10px;
+    /* Reduced margin */
+    font-size: 0.7rem;
+    color: rgba(255, 255, 255, 0.5);
+    font-style: italic;
+}
+
+/* ... existing button-group ... */
+
+.share-btn {
+    /* ... existing styles ... */
+    background: #00ffcc !important;
+    border: 2px solid #00ffcc !important;
+    color: #1a2a6c !important;
+    font-weight: bold;
+    box-shadow: 0 4px 15px rgba(0, 255, 204, 0.4);
+    font-size: 24px;
+    padding: 10px 30px;
+    border-radius: 50px;
+}
+
+/* ... existing hover ... */
+
+/* Share Card Text Styles */
+.card-header {
+    font-size: 0.8rem;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 0px;
+}
+
+
+.card-result {
+    font-family: 'Play', sans-serif;
+    font-size: 2rem;
+    /* Reduced font size */
+    font-weight: bold;
+    color: white;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
+    margin: 0;
+    /* Reduced margin */
+}
+
+.card-msg {
+    font-size: 1rem;
+    color: #00ffcc;
+    font-style: italic;
+    margin-bottom: 0;
+}
+
+.board-snapshot {
+    display: grid;
+    grid-template-columns: 120px 120px 120px;
+    grid-gap: 10px;
+    transform: scale(0.35);
+    /* Further scaled down */
+    /* Scale down the standard board size */
+    margin: -110px 0;
+    /* Adjusted negative margin */
+    /* Remove excess whitespace caused by scaling */
+    pointer-events: none;
+    /* Prevent interaction */
+}
+
+.board-snapshot app-board {
+    height: 120px;
+    /* Ensure it keeps original aspect ratio before scaling */
+}
+
+/* Force snapshot cards to be white/opaque and distinct */
+.board-snapshot ::ng-deep .square {
+    background: rgba(255, 255, 255, 0.9) !important;
+    border: 1px solid rgba(255, 255, 255, 0.5) !important;
+    color: #1a2a6c !important;
+    /* Dark blue text for contrast */
+    text-shadow: none !important;
+}
+
+/* Winning Line Highlight */
+.board-snapshot .winning ::ng-deep .square {
+    background: #00ffcc !important;
+    color: #1a2a6c !important;
+    box-shadow: 0 0 30px #00ffcc, inset 0 0 10px rgba(255, 255, 255, 0.5) !important;
+    border-color: #00ffcc !important;
+    transform: scale(1.05);
+    /* Slight pop */
+    z-index: 10;
+}
+
+.card-footer-line {
+    width: 60%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    margin: 5px 0;
+}
+
+.card-authors {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.created-by {
+    font-size: 0.7rem;
+    opacity: 0.9;
+    letter-spacing: 1px;
+    color: white;
+    margin-bottom: 2px;
+}
+
+.author-names {
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: #cc99ff;
+    text-shadow: 0 0 10px rgba(204, 153, 255, 0.4);
+    margin-top: 2px;
+    margin-bottom: 5px;
+}
+
+.live-link-container {
+    margin-top: 2px;
+    margin-bottom: 10px;
+}
+
+.live-link-text {
+    font-size: 0.7rem;
+    color: #00ffcc;
+    letter-spacing: 0.5px;
+    font-family: monospace;
+    opacity: 0.8;
+}
+
+/* Action Buttons */
+.action-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 5px;
+}
+
+.action-btn {
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    color: white;
+    padding: 6px 12px;
+    /* Smaller buttons */
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    transition: all 0.2s ease;
+    backdrop-filter: blur(5px);
+}
+
+.action-btn:hover {
+    background: rgba(255, 255, 255, 0.4);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
 /* Premium Loading Screen Styles */
@@ -82,7 +373,8 @@ h2{
     position: relative;
     width: 120px;
     height: 120px;
-    margin: 0 auto 30px;
+    margin: 0 auto 50px;
+    /* Increased margin-bottom */
 }
 
 .angular-logo {
@@ -105,16 +397,21 @@ h2{
 }
 
 .loading-title {
-    font-size: 1.2rem;
-    letter-spacing: 2px;
-    margin-bottom: 20px;
+    font-size: 1.5rem;
+    /* Slightly larger */
+    letter-spacing: 5px;
+    /* More spacious letter spacing */
+    margin-bottom: 40px;
+    /* Increased margin-bottom */
     text-transform: uppercase;
-    opacity: 0.8;
+    opacity: 0.9;
     text-align: center;
     margin-right: 0;
     width: auto;
     padding: 0;
-    color: #00ffcc; /* Reactive cyan */
+    color: #00ffcc;
+    /* Reactive cyan */
+    text-shadow: 0 0 10px rgba(0, 255, 204, 0.3);
 }
 
 .progress-container {
@@ -124,7 +421,8 @@ h2{
     border-radius: 2px;
     position: relative;
     overflow: hidden;
-    margin-bottom: 10px;
+    margin-bottom: 25px;
+    /* Increased spacing to percentage */
 }
 
 .progress-bar {
@@ -153,37 +451,81 @@ h2{
 
 .loading-footer {
     position: absolute;
-    bottom: 30px;
+    bottom: 50px;
+    /* More room from the bottom */
     text-align: center;
     width: 100%;
-    font-size: 0.8rem;
-    opacity: 0.7;
+    font-size: 0.9rem;
+    /* Slightly larger */
+    opacity: 0.8;
 }
 
-.author-link, .repo-link {
+.loading-footer p {
+    margin: 10px 0;
+    /* Vertical spacing between lines */
+    letter-spacing: 1px;
+}
+
+.author-link {
     color: #00ffcc;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.repo-link {
+    color: inherit;
     text-decoration: none;
     font-weight: bold;
     transition: color 0.3s;
 }
 
-.author-link:hover, .repo-link:hover {
+.author-link:hover {
     color: #cc99ff;
+    text-decoration: underline;
+}
+
+.repo-link:hover {
+    color: inherit;
     text-decoration: underline;
 }
 
 /* Animations */
 @keyframes floating {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
 }
 
 @keyframes pulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.05); }
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
 }
 
 @keyframes glow-pulse {
-    0%, 100% { opacity: 0.3; transform: translate(-50%, -50%) scale(1); }
-    50% { opacity: 0.6; transform: translate(-50%, -50%) scale(1.2); }
+
+    0%,
+    100% {
+        opacity: 0.3;
+        transform: translate(-50%, -50%) scale(1);
+    }
+
+    50% {
+        opacity: 0.6;
+        transform: translate(-50%, -50%) scale(1.2);
+    }
 }

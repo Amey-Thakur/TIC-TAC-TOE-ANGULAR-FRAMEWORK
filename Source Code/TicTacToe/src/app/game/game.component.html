@@ -25,13 +25,65 @@
 </div>
 
 <div class="outer-cont" *ngIf="!loading">
+  <h1 class="game-logo-title" *ngIf="!freshPage">TIC-TAC-TOE</h1>
   <h2 *ngIf="freshPage">Let's Play Tic-Tac-Toe</h2>
   <h1 *ngIf="!winner && !isDraw && !freshPage">Current Player: {{player}}</h1>
   <h2 *ngIf="winner">Player {{winner}} won!!!</h2>
   <h2 *ngIf="isDraw">Draw!!!</h2>
-  <button *ngIf="winner || isDraw || freshPage" outline (click)="newGame()">Start New Game</button>
 
-  <main *ngIf="!winner && !isDraw">
+  <div class="button-group" *ngIf="winner || isDraw || freshPage">
+    <button outline (click)="newGame()">Start New Game</button>
+    <button class="share-btn" *ngIf="!freshPage" (click)="toggleShareCard()">Share Results</button>
+  </div>
+
+  <!-- Share Card Overlay -->
+  <div class="share-overlay" *ngIf="showCard" (click)="toggleShareCard()">
+    <div class="share-card" (click)="$event.stopPropagation()">
+      <div class="card-header">TIC-TAC-TOE</div>
+      <div class="card-result" *ngIf="winner">PLAYER {{winner}} WINS!</div>
+      <div class="card-result" *ngIf="isDraw">IT'S A DRAW!</div>
+      <div class="card-msg">{{ winner ? 'Unbeatable Match!' : 'Perfect Symmetry!' }}</div>
+
+      <!-- Mini Board Snapshot -->
+      <div class="board-snapshot">
+        <app-board *ngFor="let val of squares; let i = index" [value]="val"
+          [class.winning]="winningIndices.includes(i)"></app-board>
+      </div>
+
+      <div class="card-footer-line"></div>
+      <div class="card-authors">
+        <span class="created-by">Created by</span>
+        <span class="author-names">Amey Thakur & Mega Satish</span>
+      </div>
+
+      <div class="live-link-container">
+        <p class="live-link-text">Play Live: https://amey-thakur.github.io/TIC-TAC-TOE/</p>
+      </div>
+
+      <div class="action-buttons hide-on-capture">
+        <button class="action-btn" (click)="copyResult()" title="Copy to Clipboard">
+          Copy
+        </button>
+        <button class="action-btn" (click)="shareResult()" title="Share Result">
+          Share
+        </button>
+        <button class="action-btn" (click)="downloadCard()" title="Download as Image">
+          Download
+        </button>
+      </div>
+
+      <div class="close-hint hide-on-capture">Click outside to close</div>
+    </div>
+  </div>
+
+  <main *ngIf="!winner && !isDraw && !freshPage">
     <app-board *ngFor="let val of squares; let i = index" [value]="val" (click)="makeMove(i)"></app-board>
   </main>
+
+  <div class="game-footer">
+    <p>Created by <a href="https://github.com/Amey-Thakur" target="_blank" class="author-link">Amey Thakur</a> & <a
+        href="https://github.com/msatmod" target="_blank" class="author-link">Mega Satish</a></p>
+    <p>Released: June 13, 2022 • <a href="https://github.com/Amey-Thakur/TIC-TAC-TOE-ANGULAR-FRAMEWORK" target="_blank"
+        class="repo-link">GitHub Repo</a></p>
+  </div>
 </div>
