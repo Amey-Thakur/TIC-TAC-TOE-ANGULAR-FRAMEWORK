@@ -2,7 +2,7 @@
     "@context": "https://doi.org/10.5063/schema/codemeta-2.0",
     "@type": "SoftwareSourceCode",
     "name": "Tic Tac Toe (Angular Framework)",
-    "description": "A high-end interactive game implementation built using the Angular framework and modern Signals reactivity. This application provides a premium, responsive HMI experience for digital gameplay, featuring procedural audio synthesis and tactile physical transitions.",
+    "description": "A high-end interactive game implementation built using the Angular framework and modern Signals reactivity. This application provides a tactile, responsive HMI experience for digital gameplay, featuring procedural audio synthesis and tactile physical transitions.",
     "identifier": "TIC-TAC-TOE-ANGULAR-FRAMEWORK",
     "license": "https://spdx.org/licenses/MIT.html",
     "programmingLanguage": [

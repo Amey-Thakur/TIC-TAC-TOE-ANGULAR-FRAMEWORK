@@ -8,7 +8,7 @@
   [![Technology](https://img.shields.io/badge/Technology-Angular%20%7C%20Signals-dd0031)](https://github.com/Amey-Thakur/TIC-TAC-TOE-ANGULAR-FRAMEWORK)
   [![Developed by Amey Thakur and Mega Satish](https://img.shields.io/badge/Developed%20by-Amey%20Thakur%20%26%20Mega%20Satish-blue.svg)](https://github.com/Amey-Thakur/TIC-TAC-TOE-ANGULAR-FRAMEWORK)
 
-  A high-performance, tactile game implementation built with Angular 21, featuring autonomous state management via Signals and procedural audio synthesis for a premium Human-Machine Interaction (HMI) experience.
+  A high-performance, tactile game implementation built with Angular 21, featuring autonomous state management via Signals and procedural audio synthesis for an advanced Human-Machine Interaction (HMI) experience.
 
   **[Source Code](Source%20Code/TicTacToe/)** &nbsp;·&nbsp; **[Video Demo](https://youtu.be/zCKgLImSjeo)** &nbsp;·&nbsp; **[Live Demo](https://amey-thakur.github.io/TIC-TAC-TOE/)**
 
