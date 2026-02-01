@@ -59,27 +59,28 @@
     }
 }
 
-/* Explicit winning style for snapshots/highlights */
+/* Explicit winning style: High Vibrancy */
 .winning-style {
     background-color: #00ffcc !important;
     background: #00ffcc !important;
-    border-color: #00ffcc !important;
-    color: #1a2a6c !important;
+    border: 1px solid #00ffcc !important;
+    color: #0e1d42 !important;
+    font-weight: 900 !important;
     text-shadow: none !important;
-    animation: none !important;
-    box-shadow: 0 0 15px rgba(0, 255, 204, 0.4) !important;
+    box-shadow: 0 0 25px rgba(0, 255, 204, 0.8) !important;
+    z-index: 100 !important;
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
-    z-index: 10;
 }
 
-/* Snapshot style: White opaque background ONLY if not winning */
+/* Snapshot style: Pure White for maximum contrast */
 .snapshot-style:not(.winning-style) {
-    background: rgba(255, 255, 255, 0.9) !important;
-    background-color: rgba(255, 255, 255, 0.9) !important;
-    border: 1px solid rgba(255, 255, 255, 0.5) !important;
+    background: #ffffff !important;
+    background-color: #ffffff !important;
+    border: 1px solid #e0e0e0 !important;
     color: #1a2a6c !important;
+    opacity: 1 !important;
     text-shadow: none !important;
-    box-shadow: none !important;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1) !important;
     animation: none !important;
 }
