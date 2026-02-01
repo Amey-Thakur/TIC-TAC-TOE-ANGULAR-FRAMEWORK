@@ -1,0 +1,41 @@
+{
+    "@context": "https://doi.org/10.5063/schema/codemeta-2.0",
+    "@type": "SoftwareSourceCode",
+    "name": "Tic Tac Toe (Angular Framework)",
+    "description": "A high-end cinematic game implementation built using the Angular framework and modern Signals reactivity. This application provides a premium, responsive HMI experience for digital gameplay, featuring procedural audio synthesis and cinematic physical transitions.",
+    "identifier": "TIC-TAC-TOE-ANGULAR-FRAMEWORK",
+    "license": "https://spdx.org/licenses/MIT.html",
+    "programmingLanguage": [
+        "TypeScript",
+        "Angular",
+        "CSS3",
+        "HTML5"
+    ],
+    "author": [
+        {
+            "@type": "Person",
+            "givenName": "Amey",
+            "familyName": "Thakur",
+            "id": "https://orcid.org/0000-0001-5644-1575"
+        },
+        {
+            "@type": "Person",
+            "givenName": "Mega",
+            "familyName": "Satish",
+            "id": "https://orcid.org/0000-0002-1844-9557"
+        }
+    ],
+    "dateReleased": "2022-06-13",
+    "codeRepository": "https://github.com/Amey-Thakur/TIC-TAC-TOE-ANGULAR-FRAMEWORK",
+    "developmentStatus": "complete",
+    "applicationCategory": "Game / Web Application",
+    "keywords": [
+        "Angular",
+        "Tic Tac Toe",
+        "Signals",
+        "Web Audio API",
+        "HMI",
+        "Procedural Audio",
+        "Web Application"
+    ]
+}
