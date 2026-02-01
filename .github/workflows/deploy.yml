@@ -35,7 +35,9 @@ jobs:
         working-directory: 'Source Code/TicTacToe'
 
       - name: Build
-        run: npm run build -- --base-href /TIC-TAC-TOE/
+        run: |
+          npm run build -- --base-href /TIC-TAC-TOE/
+          cp dist/tic-tac-toe/browser/index.html dist/tic-tac-toe/browser/404.html
         working-directory: 'Source Code/TicTacToe'
 
       - name: Setup Pages
