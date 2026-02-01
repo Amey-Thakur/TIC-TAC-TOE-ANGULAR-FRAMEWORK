@@ -12,6 +12,12 @@
 
   **[Source Code](Source%20Code/TicTacToe/)** &nbsp;·&nbsp; **[Video Demo](https://youtu.be/zCKgLImSjeo)** &nbsp;·&nbsp; **[Live Demo](https://amey-thakur.github.io/TIC-TAC-TOE/)**
 
+  <br>
+
+  <a href="https://youtu.be/zCKgLImSjeo">
+    <img src="https://img.youtube.com/vi/zCKgLImSjeo/maxresdefault.jpg" alt="Video Demo" width="70%">
+  </a>
+
 </div>
 
 ---
