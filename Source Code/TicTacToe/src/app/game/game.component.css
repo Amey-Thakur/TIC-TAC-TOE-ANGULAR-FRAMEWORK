@@ -1,3 +1,32 @@
+/*
+ * Project Title: Tic-Tac-Toe
+ * File: game.component.css
+ * Description: Stylesheet for the core game component. Implements a premium 
+ *              glassmorphism design system, neon-glow visual effects, and 
+ *              cinematic 3D transformations for the game board.
+ *
+ * Authors:
+ *   - Amey Thakur — https://github.com/Amey-Thakur
+ *   - Mega Satish — https://github.com/msatmod
+ *
+ * Repository:
+ *   https://github.com/Amey-Thakur/TIC-TAC-TOE
+ *
+ * Live Application:
+ *   https://amey-thakur.github.io/TIC-TAC-TOE/
+ *
+ * Video Demonstration:
+ *   https://youtu.be/zCKgLImSjeo
+ *
+ * Release Date:
+ *   June 13, 2022
+ *
+ * License:
+ *   MIT License
+ *
+ * Copyright (c) 2022 Amey Thakur & Mega Satish
+ */
+
 * {
     margin: 0;
     padding: 0;
@@ -9,8 +38,23 @@
     flex-direction: column;
     background: linear-gradient(to bottom left, #00ffcc 0%, #cc99ff 100%);
     align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+    padding: 20px 0;
+    /* Reclaimed padding */
+    gap: 8px;
+    /* Tighter global gap */
+    overflow-x: hidden;
+    transition: all 0.7s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.landing-center-wrap {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
-    height: 100vh;
+    width: 100%;
 }
 
 .game-logo-title {
@@ -56,12 +100,84 @@ app-board {
     font-family: 'Play', sans-serif;
     border: none;
     height: 120px;
-    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
 }
 
-app-board:hover {
-    transform: scale(1.05);
+/* Winning State Cinematic Recoloring */
+.victory-flip ::ng-deep .square {
+    background: linear-gradient(135deg, #00ffcc 0%, #38bdf8 100%) !important;
+    color: #1a2a6c !important;
+    border: 2px solid white !important;
+    z-index: 10;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+    animation: victoryGlowPulse 3s infinite ease-in-out !important;
 }
+
+.victory-flip ::ng-deep .square:hover {
+    box-shadow: 0 0 25px rgba(0, 255, 204, 0.8), inset 0 0 15px rgba(255, 255, 255, 0.6) !important;
+}
+
+/* Base hover expands the component container */
+app-board:hover {
+    transform: scale(1.05) !important;
+    /* Added !important to ensure precedence */
+}
+
+/* Victory cards need to maintain their 360deg rotation while expanding on hover */
+.victory-flip:hover {
+    transform: rotateY(360deg) scale(1.05) !important;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+}
+
+/* Victory Flip Animation */
+.victory-flip {
+    animation: flipBoard 0.6s cubic-bezier(0.455, 0.03, 0.515, 0.95) both;
+}
+
+/* Draw Shake Animation */
+.draw-shake {
+    animation: shakeBoard 0.5s cubic-bezier(.36, .07, .19, .97) both;
+}
+
+@keyframes flipBoard {
+    0% {
+        transform: rotateY(0);
+    }
+
+    50% {
+        transform: rotateY(180deg) scale(1.1);
+    }
+
+    100% {
+        transform: rotateY(360deg) scale(1);
+        /* Ends at base scale for consistent hover expansion */
+    }
+}
+
+@keyframes shakeBoard {
+
+    10%,
+    90% {
+        transform: translate3d(-1px, 0, 0);
+    }
+
+    20%,
+    80% {
+        transform: translate3d(2px, 0, 0);
+    }
+
+    30%,
+    50%,
+    70% {
+        transform: translate3d(-4px, 0, 0);
+    }
+
+    40%,
+    60% {
+        transform: translate3d(4px, 0, 0);
+    }
+}
+
 
 h1 {
     text-align: center;
@@ -104,25 +220,114 @@ h2 {
     font-family: 'Play', sans-serif;
     font-size: 60px;
     color: white;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     text-align: center;
     text-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
     animation: fadeInUp 1s ease-out;
+    transition: all 0.7s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.status-compact h2 {
+    font-size: 56px;
+    /* Restored to bold large scale */
+    margin-bottom: 8px;
+    /* Reduced from 12px */
+}
+
+.status-compact .game-logo-title {
+    font-size: 1.8rem;
+    margin-bottom: 5px;
+}
+
+.status-compact main {
+    transform: scale(0.8);
+    /* Slightly larger for impact */
+    margin: -35px 0;
+    /* Even tighter vertical wrap */
+    transition: all 0.7s cubic-bezier(0.19, 1, 0.22, 1);
+    pointer-events: auto;
+    /* Ensure hover works */
+}
+
+.status-compact app-board {
+    cursor: default !important;
+    /* Visual signal that clicks are disabled */
+}
+
+.status-compact ::ng-deep .square {
+    cursor: default !important;
+}
+
+.status-compact .button-group button {
+    font-size: 22px;
+    /* Restored size */
+    padding: 8px 30px;
 }
 
 .game-footer {
-    position: absolute;
-    bottom: 20px;
+    padding: 10px 0;
+    /* reclaimed space */
     text-align: center;
     width: 100%;
-    font-size: 0.95rem;
+    font-size: 0.85rem;
     color: rgba(255, 255, 255, 0.8);
     letter-spacing: 1px;
     animation: fadeInUp 1.6s ease-out;
 }
 
 .game-footer p {
-    margin: 12px 0;
+    margin: 8px 0;
+}
+
+/* Mobile & Small Screen Responsiveness */
+@media (max-width: 600px) {
+    .outer-cont {
+        padding: 10px 0;
+        gap: 5px;
+    }
+
+    app-board {
+        height: 85px;
+        /* Smaller cards for mobile */
+    }
+
+    main {
+        grid-template-columns: repeat(3, 85px);
+        margin: 5px 0;
+        padding: 10px;
+    }
+
+    h2 {
+        font-size: 32px;
+        /* Smaller winner text */
+    }
+
+    .status-compact h2 {
+        font-size: 24px;
+    }
+
+    .game-logo-title {
+        font-size: 1.4rem;
+        margin-top: 10px;
+        letter-spacing: 4px;
+    }
+
+    .status-compact main {
+        transform: scale(0.75);
+        /* Even more compact on mobile */
+        margin: -20px 0;
+    }
+
+    .button-group button {
+        font-size: 16px;
+        padding: 8px 15px;
+        margin: 5px;
+    }
+
+    .game-footer {
+        font-size: 0.75rem;
+        padding: 10px 0;
+    }
 }
 
 @keyframes fadeInUp {
@@ -137,6 +342,18 @@ h2 {
     }
 }
 
+@keyframes victoryGlowPulse {
+
+    0%,
+    100% {
+        box-shadow: 0 0 15px rgba(0, 255, 204, 0.6), inset 0 0 10px rgba(255, 255, 255, 0.4);
+    }
+
+    50% {
+        box-shadow: 0 0 30px rgba(0, 255, 204, 0.9), inset 0 0 20px rgba(255, 255, 255, 0.6);
+    }
+}
+
 
 /* Share Overlay */
 .share-overlay {
@@ -145,13 +362,25 @@ h2 {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.85);
-    backdrop-filter: blur(5px);
+    background: rgba(15, 23, 42, 0.8);
+    backdrop-filter: blur(12px);
     z-index: 10000;
     display: flex;
     justify-content: center;
     align-items: center;
-    animation: fadeIn 0.3s ease-out;
+    animation: fadeInOverlay 0.4s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+@keyframes fadeInOverlay {
+    from {
+        opacity: 0;
+        backdrop-filter: blur(0);
+    }
+
+    to {
+        opacity: 1;
+        backdrop-filter: blur(12px);
+    }
 }
 
 @keyframes fadeIn {
@@ -165,26 +394,38 @@ h2 {
 }
 
 .share-card {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 20px;
-    padding: 20px 40px;
-    /* Reduced padding */
+    background: rgba(30, 41, 59, 0.95);
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 28px;
+    padding: 30px;
+    /* Restored padding */
     text-align: center;
-    box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
-    animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 40px 100px rgba(0, 0, 0, 0.5);
+    animation: cardSlideUp 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) both;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px;
-    /* Reduced gap */
-    min-width: 300px;
-    max-height: 90vh;
-    /* Ensure it fits in viewport */
-    overflow-y: auto;
-    /* Allow internal scroll if absolutely necessary on tiny screens */
+    gap: 15px;
+    /* Restored gap */
+    width: 380px;
+    /* Restored width */
+    max-width: 90vw;
+    position: relative;
+    overflow: hidden;
+}
+
+@keyframes cardSlideUp {
+    from {
+        transform: translateY(50px) scale(0.9);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
 }
 
 .close-hint {
@@ -224,12 +465,11 @@ h2 {
 .card-result {
     font-family: 'Play', sans-serif;
     font-size: 2rem;
-    /* Reduced font size */
+    /* Restored size */
     font-weight: bold;
     color: white;
-    text-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
-    margin: 0;
-    /* Reduced margin */
+    text-shadow: 0 0 20px rgba(56, 189, 248, 0.5);
+    margin: 8px 0;
 }
 
 .card-msg {
@@ -241,16 +481,26 @@ h2 {
 
 .board-snapshot {
     display: grid;
-    grid-template-columns: 120px 120px 120px;
+    grid-template-columns: repeat(3, 1fr);
     grid-gap: 10px;
-    transform: scale(0.35);
-    /* Further scaled down */
-    /* Scale down the standard board size */
-    margin: -110px 0;
-    /* Adjusted negative margin */
-    /* Remove excess whitespace caused by scaling */
+    /* Restored gap */
+    width: 150px;
+    /* Restored width */
+    margin: 15px 0;
+    /* Restored margin */
     pointer-events: none;
-    /* Prevent interaction */
+}
+
+.board-snapshot app-board {
+    height: 45px !important;
+    /* Restored height */
+    width: 45px !important;
+    /* Restored width */
+}
+
+.board-snapshot ::ng-deep .square {
+    font-size: 1.2rem !important;
+    border-radius: 8px !important;
 }
 
 .board-snapshot app-board {
@@ -314,11 +564,23 @@ h2 {
 }
 
 .live-link-text {
-    font-size: 0.7rem;
+    font-size: 0.75rem;
+    /* Slightly larger since label is gone */
     color: #00ffcc;
     letter-spacing: 0.5px;
     font-family: monospace;
     opacity: 0.8;
+    text-decoration: none;
+    white-space: nowrap;
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: opacity 0.3s;
+}
+
+.live-link-text:hover {
+    opacity: 1;
+    text-decoration: underline;
 }
 
 /* Action Buttons */

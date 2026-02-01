@@ -1,13 +1,53 @@
+/**
+ * Project Title: Tic-Tac-Toe
+ * File: sound.service.ts
+ * Description: Procedural audio engine leveraging the Web Audio API. 
+ *              Provides low-latency auditory feedback for game interactions 
+ *              without the need for external asset loading.
+ *
+ * Authors:
+ *   - Amey Thakur — https://github.com/Amey-Thakur
+ *   - Mega Satish — https://github.com/msatmod
+ *
+ * Repository:
+ *   https://github.com/Amey-Thakur/TIC-TAC-TOE
+ *
+ * Live Application:
+ *   https://amey-thakur.github.io/TIC-TAC-TOE/
+ *
+ * Video Demonstration:
+ *   https://youtu.be/zCKgLImSjeo
+ *
+ * Release Date:
+ *   June 13, 2022
+ *
+ * License:
+ *   MIT License
+ *
+ * Copyright (c) 2022 Amey Thakur & Mega Satish
+ */
+
 import { Injectable } from '@angular/core';
 
 @Injectable({
     providedIn: 'root'
 })
+/**
+ * @class SoundService
+ * @description Architecture for real-time oscillator-based sound generation.
+ * Encapsulates AudioContext management and harmonic frequency orchestration.
+ */
 export class SoundService {
     private audioCtx: AudioContext | null = null;
 
     constructor() { }
 
+    /**
+   * @method initAudio
+   * @description Lazy-initialization of the AudioContext. 
+   * Ensures compliance with browser "user-interaction" security policies 
+   * for audio playback.
+   */
     private initAudio() {
         if (!this.audioCtx) {
             this.audioCtx = new (window.AudioContext || (window as any).webkitAudioContext)();
@@ -47,6 +87,15 @@ export class SoundService {
         this.playTone(150, 0.4, 'sawtooth', 0.05);
     }
 
+    /**
+   * @method playTone
+   * @description Core signal synthesis engine. 
+   * Configures an OscillatorNode and GainNode to produce a specific spectral signature.
+   * @param freq - Frequency in Hertz.
+   * @param duration - Time in seconds before decay.
+   * @param type - Oscillator waveform geometry.
+   * @param volume - Standardized gain level.
+   */
     private playTone(freq: number, duration: number, type: OscillatorType, volume: number) {
         if (!this.audioCtx) return;
 

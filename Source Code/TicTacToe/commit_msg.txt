@@ -1,3 +1,0 @@
-Angular 
- 
-Co-authored-by: Mega Satish <mega.modha@gmail.com> 

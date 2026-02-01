@@ -1,7 +1,46 @@
+/*
+ * Project Title: Tic-Tac-Toe
+ * File: styles.css
+ * Description: Global application-level stylesheet. Defines the central typography 
+ *              (Play font-family), background aesthetics, and core layout tokens.
+ *
+ * Authors:
+ *   - Amey Thakur — https://github.com/Amey-Thakur
+ *   - Mega Satish — https://github.com/msatmod
+ *
+ * Repository:
+ *   https://github.com/Amey-Thakur/TIC-TAC-TOE
+ *
+ * Live Application:
+ *   https://amey-thakur.github.io/TIC-TAC-TOE/
+ *
+ * Video Demonstration:
+ *   https://youtu.be/zCKgLImSjeo
+ *
+ * Release Date:
+ *   June 13, 2022
+ *
+ * License:
+ *   MIT License
+ *
+ * Copyright (c) 2022 Amey Thakur & Mega Satish
+ */
+
 /* You can add global styles to this file, and also import other style files */
-@import url('https://fonts.googleapis.com/css2?family=Play&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Play:wght@400;700&display=swap');
 
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor: default;
+}
+
+body {
+    background: #0f172a;
+    overflow: hidden;
 }

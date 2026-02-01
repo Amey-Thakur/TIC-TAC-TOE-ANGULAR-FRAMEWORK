@@ -1,4 +1,33 @@
-import { Component, OnInit } from '@angular/core';
+/**
+ * Project Title: Tic-Tac-Toe
+ * File: game.component.ts
+ * Description: Core game engine and state controller. Manages reactivity via Angular Signals,
+ *              handles turn-based logic, evaluates win conditions, and orchestrates 
+ *              cinematic post-game sequences.
+ *
+ * Authors:
+ *   - Amey Thakur — https://github.com/Amey-Thakur
+ *   - Mega Satish — https://github.com/msatmod
+ *
+ * Repository:
+ *   https://github.com/Amey-Thakur/TIC-TAC-TOE
+ *
+ * Live Application:
+ *   https://amey-thakur.github.io/TIC-TAC-TOE/
+ *
+ * Video Demonstration:
+ *   https://youtu.be/zCKgLImSjeo
+ *
+ * Release Date:
+ *   June 13, 2022
+ *
+ * License:
+ *   MIT License
+ *
+ * Copyright (c) 2022 Amey Thakur & Mega Satish
+ */
+
+import { Component, OnInit, signal, computed } from '@angular/core';
 import html2canvas from 'html2canvas';
 import { DecimalPipe } from '@angular/common';
 import { BoardComponent } from '../board/board.component';
@@ -10,17 +39,30 @@ import { SoundService } from '../sound.service';
   styleUrls: ['./game.component.css'],
   imports: [BoardComponent, DecimalPipe]
 })
+/**
+ * @class GameComponent
+ * @description State-driven component leveraging Angular's fine-grained reactivity.
+ * Implements a 3x3 grid logic with automatic resolution for victory/draw states.
+ */
 export class GameComponent implements OnInit {
+  squares = signal<('X' | 'O' | undefined)[]>(Array(9).fill(undefined));
+  xIsNext = signal<boolean>(true);
+  winner = signal<'X' | 'O' | null>(null);
+  counter = signal<number>(0);
+  isDraw = signal<boolean>(false);
+  freshPage = signal<boolean>(true);
+  loading = signal<boolean>(true);
+  loadingProgress = signal<number>(0);
+  showCard = signal<boolean>(false);
+  winningIndices = signal<number[]>([]);
+  gameConcluding = signal<boolean>(false); // NEW: Controls the cinematic pause
 
-  squares: any = [];
-  xIsNext = true;
-  winner = '';
-  counter = 0;
-  isDraw = '';
-  freshPage = true;
-  loading = true;
-  loadingProgress = 0;
-  showCard = false;
+  /**
+   * @property player
+   * @description Computed signal that derives the current active player symbol.
+   * Ensures data consistency between turns.
+   */
+  player = computed(() => (this.xIsNext() ? 'X' : 'O') as 'X' | 'O');
 
   constructor(private soundService: SoundService) { }
 
@@ -34,14 +76,15 @@ export class GameComponent implements OnInit {
     const increment = (100 / (duration / intervalTime));
 
     const progressInterval = setInterval(() => {
-      this.loadingProgress += increment;
-      if (this.loadingProgress >= 100) {
-        this.loadingProgress = 100;
-        clearInterval(progressInterval);
-        setTimeout(() => {
-          this.loading = false;
-        }, 500);
-      }
+      this.loadingProgress.update(p => {
+        const next = p + increment;
+        if (next >= 100) {
+          clearInterval(progressInterval);
+          setTimeout(() => this.loading.set(false), 500);
+          return 100;
+        }
+        return next;
+      });
     }, intervalTime);
   }
 
@@ -49,11 +92,12 @@ export class GameComponent implements OnInit {
 
   toggleShareCard() {
     this.soundService.playClick();
-    this.showCard = !this.showCard;
+    this.showCard.update(s => !s);
   }
 
   async copyResult() {
-    const text = `🎮 Tic-Tac-Toe\n\n🏆 Result: ${this.winner ? 'Player ' + this.winner + ' Won!' : 'It was a Draw!'} \n🔥 Unbeatable Match!\n\n🔴 Play Live: https://amey-thakur.github.io/TIC-TAC-TOE/\n\nCreated by Amey Thakur & Mega Satish`;
+    const resText = this.winner() ? 'Player ' + this.winner() + ' Won!' : 'It was a Draw!';
+    const text = `🎮 Tic-Tac-Toe\n\n🏆 Result: ${resText} \n🔥 Unbeatable Match!\n\n🔴 Play Live: https://amey-thakur.github.io/TIC-TAC-TOE/\n\nCreated by Amey Thakur & Mega Satish`;
     try {
       this.soundService.playClick();
       await navigator.clipboard.writeText(text);
@@ -64,9 +108,10 @@ export class GameComponent implements OnInit {
   }
 
   async shareResult() {
+    const resText = this.winner() ? 'Player ' + this.winner() + ' Won!' : 'It was a Draw!';
     const data = {
       title: 'Tic-Tac-Toe Result',
-      text: `🎮 Tic-Tac-Toe\n\n🏆 Result: ${this.winner ? 'Player ' + this.winner + ' Won!' : 'It was a Draw!'} \n🔥 Unbeatable Match!\n\nCreated by Amey Thakur & Mega Satish`,
+      text: `🎮 Tic-Tac-Toe\n\n🏆 Result: ${resText} \n🔥 Unbeatable Match!\n\nCreated by Amey Thakur & Mega Satish`,
       url: 'https://amey-thakur.github.io/TIC-TAC-TOE/'
     };
 
@@ -106,16 +151,24 @@ export class GameComponent implements OnInit {
     }
   }
 
-  get player() {
-    return this.xIsNext ? 'X' : 'O'
-  }
 
-  winningIndices: number[] = [];
+  // Signals handle reactivity automatically
 
+  /**
+   * @method makeMove
+   * @description Central event handler for user interaction. 
+   * Orchestrates move validation, state updates, sound triggers, and game resolution status.
+   * @param idx - The index of the square being targeted (0-8).
+   */
   makeMove(idx: number) {
-    if (!this.squares[idx]) {
-      const currentPlayer = this.player;
-      this.squares.splice(idx, 1, currentPlayer)
+    if (this.winner() || this.isDraw() || this.gameConcluding()) return;
+    if (!this.squares()[idx]) {
+      const currentPlayer = this.player();
+      this.squares.update(s => {
+        const newSquares = [...s];
+        newSquares[idx] = currentPlayer;
+        return newSquares;
+      });
 
       if (currentPlayer === 'X') {
         this.soundService.playMoveX();
@@ -123,19 +176,36 @@ export class GameComponent implements OnInit {
         this.soundService.playMoveO();
       }
 
-      this.xIsNext = !this.xIsNext;
-      this.counter++;
+      this.xIsNext.update(x => !x);
+      this.counter.update(c => c + 1);
     }
-    this.winner = this.calculateWinner();
 
-    if (this.winner) {
-      this.soundService.playWin();
-    } else if (this.counter == 9) {
-      this.isDraw = 'yes'
-      this.soundService.playDraw();
+    const win = this.calculateWinner();
+    this.winner.set(win);
+
+    if (win || this.counter() == 9) {
+      this.gameConcluding.set(true); // Trigger animations
+
+      if (win) {
+        this.soundService.playWin();
+      } else {
+        this.isDraw.set(true);
+        this.soundService.playDraw();
+      }
+
+      // Cinematic pause before showing the post-game UI
+      setTimeout(() => {
+        this.gameConcluding.set(false);
+      }, 1500);
     }
   }
 
+  /**
+   * @method calculateWinner
+   * @description Implementation of the core win-condition evaluation strategy.
+   * Iterates through pre-defined combinatorial victory paths to determine match resolution.
+   * @returns The winning symbol ('X' or 'O') or null if no winner exists.
+   */
   calculateWinner() {
     const lines = [
       [0, 1, 2], [3, 4, 5], [6, 7, 8],
@@ -145,9 +215,10 @@ export class GameComponent implements OnInit {
 
     for (let i = 0; i < lines.length; i++) {
       const [a, b, c] = lines[i];
-      if (this.squares[a] && this.squares[a] === this.squares[b] && this.squares[a] === this.squares[c]) {
-        this.winningIndices = [a, b, c]; // Store winning indices
-        return this.squares[a];
+      const squares = this.squares();
+      if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
+        this.winningIndices.set([a, b, c]);
+        return squares[a];
       }
     }
     return null
@@ -155,12 +226,13 @@ export class GameComponent implements OnInit {
 
   newGame() {
     this.soundService.playClick();
-    this.squares = Array(9).fill(null);
-    this.winner = '';
-    this.isDraw = '';
-    this.counter = 0;
-    this.freshPage = false;
-    this.showCard = false;
-    this.winningIndices = [];
+    this.squares.set(Array(9).fill(undefined));
+    this.winner.set(null);
+    this.isDraw.set(false);
+    this.counter.set(0);
+    this.freshPage.set(false);
+    this.showCard.set(false);
+    this.winningIndices.set([]);
+    this.gameConcluding.set(false);
   }
 }
