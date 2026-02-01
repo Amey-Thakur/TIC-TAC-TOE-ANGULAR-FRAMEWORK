@@ -586,24 +586,28 @@ h2 {
 /* Action Buttons */
 .action-buttons {
     display: flex;
-    gap: 10px;
+    gap: 12px;
     margin-top: 5px;
+    width: 100%;
+    /* Ensure it fills available card space */
+    box-sizing: border-box;
 }
 
 .action-btn {
+    flex: 1;
+    /* Forces equal width distribution */
     background: rgba(255, 255, 255, 0.2);
     border: 1px solid rgba(255, 255, 255, 0.4);
     color: white;
-    padding: 6px 12px;
-    /* Smaller buttons */
-    min-width: 100px;
-    /* Harmonized width */
-    text-align: center;
+    padding: 10px 5px;
+    /* Adjusted padding for internal balance */
     border-radius: 15px;
     cursor: pointer;
     font-size: 0.8rem;
     transition: all 0.2s ease;
     backdrop-filter: blur(5px);
+    text-align: center;
+    white-space: nowrap;
 }
 
 .action-btn:hover {
